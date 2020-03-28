@@ -1,52 +1,63 @@
+/****************IMPORTING MODEL*******************************/
 const Note = require("../models/notes");
 
+/**********EXPORTING FUNCTION FOR newNote ROUTE******************/
 module.exports.createNote = async function(req, res){
     try
     {
         await Note.create({
             note: req.body.note,
             user: req.user.id
-        }, function(err){
+            }, function(err){
             
-            if(err){
-                console.log("Error in creating notes");
+                if(err){
+                    return res.status(400).json({
+                        message: "Error in creating Note"
+                    });
+                }
+                return res.status(200).json({
+                    message: "Note Created",
+                    data: req.body
+                });
             }
-            return res.status(200).json({
-                message: "Note Created",
-                data: req.body
-            });
-
-        });
+        );
        
     }catch(err){
-        res.json({
-            message: err
+        res.json(500,{
+            message: "Internal Server ERROR"
         })
     }
 };
 
+/**********EXPORTING FUNCTION FOR getNote ROUTE******************/
 module.exports.getNote = async function(req, res){
     try
     {
-        let notes = await Note.find(
-            
+        /***Finding List of Post for Logged In user with the help of JWT***/
+        let notes = await Note.find( 
             {user: req.user.id}
-            
         );
-        console.log(notes);
-        return res.status(200).json({
-            message: "List of Posts",
-            notes: notes
-            
-        });
+        if(notes.length > 0){
+            return res.status(200).json({
+                message: "List of Notes",
+                notes: notes
+                
+            });
+        }else{
+            return res.json({
+                message: "No Notes Available Till Now"
+            });
+        }
+        
 
     }catch(err){
-        res.json({
-            message: err
+        res.json(500,{
+            message: "Internal Server ERROR"
         })
     }
 };
 
+/**********EXPORTING FUNCTION FOR Delete ROUTE******************/
 module.exports.delete = async function(req, res){
     try
     {
@@ -61,7 +72,7 @@ module.exports.delete = async function(req, res){
             });
         }else{
             return res.json(401, {
-                message: "You not able to delete this Note"
+                message: "You're not able to delete this Note"
             });
         }
         
@@ -72,6 +83,7 @@ module.exports.delete = async function(req, res){
     }
 };
 
+/**********EXPORTING FUNCTION FOR editNote ROUTE******************/
 module.exports.edit = async function(req, res){
     try
     {
