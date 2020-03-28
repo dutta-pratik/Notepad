@@ -1,4 +1,6 @@
 const User = require("../models/user");
+const jwt = require("jsonwebtoken");
+
 
 module.exports.register = async function(req, res){
     try
@@ -17,7 +19,7 @@ module.exports.register = async function(req, res){
     }catch(err){
         res.json({
             message: err
-        })
+        });
     }
     
 }
@@ -28,25 +30,26 @@ module.exports.login = function(req, res){
     {
         User.findOne({email: req.body.email}, function(err, user) {
             if(err){
-                console.log("error in login");
-                return res.status(401).json({
-                    message: "error in login"
+                return res.status(422).json({
+                    message: "Invalid username or password"
                 });
-            } 
-
+            }
             if(req.body.password === user.password){
-                    return res.status(200).json({
-                        message: "Login Successful"
-                    });
+                return res.status(200).json({
+                    message: "Login Successful",
+                    data:{
+                        token: jwt.sign(user.toJSON(), "A23XWqes", {expiresIn: "100000"})
+                    }
+                });
             }else{
-                    return res.status(401).json({
-                        message: "Login Unuccessful"
-                    });
+                return res.status(422).json({
+                    message: "Invalid username or password"
+                });
             }   
         });
     }catch(err){
-        res.json({
+        return res.json(500, {
             message: err
-        })
+        });
     }
 }

@@ -1,6 +1,7 @@
 const express = require("express");
 
 const router = express.Router();
+const passport = require("passport");
 
 const noteController = require("../controller/note_controller");
 const userController = require("../controller/user_controller");
@@ -19,9 +20,9 @@ const userController = require("../controller/user_controller");
 // });
 
 
-router.post("/newNote", noteController.createNote);
+router.post("/newNote",passport.authenticate('jwt', {session:false}), noteController.createNote);
 
-router.get("/getNote", noteController.getNote);
+router.get("/getNote",passport.authenticate('jwt', {session:false}), noteController.getNote);
 
 router.use("/editNote", require("./editnote"));
 
