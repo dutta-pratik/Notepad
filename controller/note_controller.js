@@ -1,26 +1,59 @@
 /****************IMPORTING MODEL*******************************/
 const Note = require("../models/notes");
 
+const fs = require("fs");
+const path = require("path");
+
 /**********EXPORTING FUNCTION FOR newNote ROUTE******************/
 module.exports.createNote = async function(req, res){
     try
     {
-        await Note.create({
-            note: req.body.note,
-            user: req.user.id
-            }, function(err){
-            
-                if(err){
-                    return res.status(400).json({
-                        message: "Error in creating Note"
-                    });
-                }
-                return res.status(200).json({
-                    message: "Note Created",
-                    data: req.body
-                });
+        //Use for uploading file with note
+        Note.uploadedFile(req, res, function(err){
+            if(err){
+                cosole.log("multer Error");
             }
-        );
+            // if file is present
+            if(req.file){
+                Note.create({
+                    note: req.body.note,
+                    user: req.user.id,
+                    file: Note.filePath + "/" + req.file.filename
+                    }, function(err){
+                        if(err){
+                            console.log(err)
+                            return res.status(400).json({
+                                message: "Error in creating Note or Uploading File"
+                            });
+                        }
+                        return res.status(200).json({
+                            message: "Note Created and File Uploaded",
+                            data: req.body,
+                            file: req.file.filename
+                        });
+                    }
+                );
+            }else{
+                //if file is not present
+                Note.create({
+                    note: req.body.note,
+                    user: req.user.id
+                    }, function(err){
+                        if(err){
+                            
+                            console.log(err)
+                            return res.status(400).json({
+                                message: "Error in creating Note"
+                            });
+                        }
+                        return res.status(200).json({
+                            message: "Note Created",
+                            data: req.body
+                        });
+                    }
+                );
+            }
+        });
        
     }catch(err){
         res.json(500,{

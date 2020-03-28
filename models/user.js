@@ -1,5 +1,4 @@
 /****************IMPORTING MONGOOSE*******************************/
-
 const mongoose = require("mongoose");
 
 /***************CREATING USER SCHEMA*****************************/
@@ -17,6 +16,7 @@ const userSchema = mongoose.Schema({
         required: true
     }
 });
+
 
 /******************MAKING MODEL*********************************/
 const User = mongoose.model("User", userSchema);
