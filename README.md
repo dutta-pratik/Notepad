@@ -91,7 +91,7 @@ And if the entered credentials are incorrect, it will give the output as
 <br>
 <img src="readmeimg/login-invalid.png">
 <hr>
-<br><br>
+ <br><h3><strong>JWT Token</strong></h3><br>
 <hr>
 <i> To use the <code>edit</code>, <code>delete</code>, <code>udate</code> functionality we have to copy and paste the token to header as shown below</I>
 <br>
@@ -119,6 +119,9 @@ And if the entered credentials are incorrect, it will give the output as
 Entering <code>note</code> is necessary while <code>upload file</code> is optional.
 <br>
 <img src="readmeimg/newNote-created.png">
+<hr>
+<br> we can see the note in the database as well <br>
+<img src="readmeimg/db-img-1.png">
 <hr>
 <br>
 <li id="get"><h2> Fetch Created Notes </h2>
@@ -167,6 +170,10 @@ If the id is not associated with the logged in user, it'll show message like<br>
 <code>editNote</code> is used to update the note created by the user. <br>
 It will fetch the id from params and if the particular note is associated with the logged in user, it'll update the note.<br>
 <img src="readmeimg/editNote-update.png">
+<hr>
+<br>
+Same will be reflecte in the database as well. You can see the note in the database<br>
+<img src="readmeimg/db-update.png">
 <hr>
 <br>
 If the id is not associated with the logged in user, it'll show message like<br>
