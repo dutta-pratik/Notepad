@@ -142,7 +142,7 @@ Here is the successfull fetching of the notes by the user.<br>
 <hr>
 <br>
 <li id="delete"><h2> Delete Note </h2>
-<strong>Route</strong> for Delete Note is <code>/deleteNote</code>
+<strong>Route</strong> for Delete Note is <code>/deleteNote</code><br>
 <i>to be specific <strong><code>/deleteNote/"noteID"</code></strong></i>
 <br>
 <strong>Link</strong>: <code>http://localhost:8000/deleteNote<i><strong>/"noteID"</strong></i></code>
@@ -158,7 +158,7 @@ If the id is not associated with the logged in user, it'll show message like<br>
 <hr>
 <br>
 <li id="edit"><h2> Update Note </h2>
-<strong>Route</strong> for Delete Note is <code>/editNote</code>
+<strong>Route</strong> for Delete Note is <code>/editNote</code><br>
 <i>to be specific <strong><code>/editNote/"noteID"</code></strong></i>
 <br>
 <strong>Link</strong>: <code>http://localhost:8000/editNote<i><strong>/"noteID"</strong></i></code>
