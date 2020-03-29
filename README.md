@@ -11,14 +11,16 @@ It is an API for Notepad App which helps to perform various functionality like c
 <li><a href="#5">Support</a>
 </ul>
 
-# <p id="1">How to Setup the Code into your System
+# How to Setup the Code into your System
+<p id="1">
 <ul>
 <li> Fork this repository into your github account (create one if you don't have it yet)
 <li> Clone it to your system (<code>git clone</code>)
 <li> In the terminal run git remote add upstream <code>https://github.com/pratik-dutta/Notepad.git</code> (this is for taking a fresh update of the code anytime in the future)
 </ul>
 
-# <p id="2">Cloning the repository using VS Code
+# Cloning the repository using VS Code
+<p id="2">
 <ul >
 <li> Open VS Code.
 <li> Go to <i>View > Terminal</i>.
@@ -30,19 +32,22 @@ It is an API for Notepad App which helps to perform various functionality like c
 <li> Now you're good to go!
 </ul>
 
-# <p id="3">Tech Used in it
+# Tech Used in it
+<p id="3">
 <strong>Stack</strong>: NodeJs, ExpressJs, MongoDB
 <br>
 <strong>Authentication Packages</strong>: Passport, Passport JWT, jsonwebtoken
 <br>
 <strong>Uploading Files</strong>: Multer
 
-# <p id="4">Detailed API's Functionality
+# Detailed API's Functionality
+<p id="4">
 <br>
 This API helps to performs the following function
 <ul>
 <li><a href="#register">Register</a>
 <li><a href="#login">Login</a>
+ <li><a href="#jwt">JWT</a>
 <li><a href="#create">Create New Note (and Upload File)</a>
 <li><a href="#get">Fetch Created Notes</a>
 <li><a href="#delete">Delete Note</a>
@@ -91,7 +96,8 @@ And if the entered credentials are incorrect, it will give the output as
 <br>
 <img src="readmeimg/login-invalid.png">
 <hr>
- <br><h3><strong>JWT Token</strong></h3><br>
+ <br>
+<li id="jwt"><h2><strong>JWT Token</strong></h2><br>
 <hr>
 <i> To use the <code>edit</code>, <code>delete</code>, <code>udate</code> functionality we have to copy and paste the token to header as shown below</I>
 <br>
@@ -116,6 +122,7 @@ And if the entered credentials are incorrect, it will give the output as
 <br>
 <code>newNote</code> helps the user to create the note and also upload file if they want to.<br>
 <code>Multer</code> is being used for uploading file.<br> 
+ File is going to be saved in the Disk Storage under the folder <code>upload/users/file</code><br>
 Entering <code>note</code> is necessary while <code>upload file</code> is optional.
 <br>
 <img src="readmeimg/newNote-created.png">
@@ -182,7 +189,8 @@ If the id is not associated with the logged in user, it'll show message like<br>
 <br>
 </ul>
 
-# <p id="5">Support
+# Support
+<p id="5">
 Feel free to contact at <i>pratikdutta.786(at)gmail(dot)com</i> for any query.
 
  
