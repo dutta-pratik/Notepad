@@ -18,7 +18,7 @@ module.exports.createNote = async function(req, res){
                 Note.create({
                     note: req.body.note,
                     user: req.user.id,
-                    file: Note.filePath + "/" + req.file.filename
+                    file: Note.filePath + '/' + req.file.filename
                     }, function(err){
                         if(err){
                             console.log(err)
@@ -136,6 +136,7 @@ module.exports.edit = async function(req, res){
             });
         }
     }catch(err){
+        console.log(err);
         res.json(500, {
             message: "Internal Server Error"
         });
