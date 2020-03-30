@@ -25,7 +25,7 @@ It is an API for Notepad App which helps to perform various functionality like c
 <li> Open VS Code.
 <li> Go to <i>View > Terminal</i>.
 <li> To clone the repo to your desktop, change the directory to desktop by running the command <code>cd desktop</code>.
-<li> In the terminal, run <code>git clone https://github.com/CodingNinjasCodes/InterQues.git</code>.
+<li> In the terminal, run <code>git clone https://github.com/pratik-dutta/Notepad.git</code>.
 <li> A folder/directory should be created on your desktop.
 <li> Open that folder in VS Code, go to <i>File > Open</i>.
 <li> Run <code>npm install</code> to download dependencies of the project or you can download it by seeing dependencies in <code>package.json</code>.
